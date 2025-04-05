@@ -1,5 +1,7 @@
 # Google Chat MCP Server
 
+[![smithery badge](https://smithery.ai/badge/@rishipradeep-think41/gchat-mcp)](https://smithery.ai/server/@rishipradeep-think41/gchat-mcp)
+
 A Model Context Protocol (MCP) server implementation for interacting with the Google Chat API via webhooks. This server provides a simple tool for posting text messages to Google Chat spaces.
 
 ## Features
@@ -10,6 +12,14 @@ A Model Context Protocol (MCP) server implementation for interacting with the Go
 - Easy to use with MCP-compatible tools
 
 ## Installation
+
+### Installing via Smithery
+
+To install gchat-mcp for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@rishipradeep-think41/gchat-mcp):
+
+```bash
+npx -y @smithery/cli install @rishipradeep-think41/gchat-mcp --client claude
+```
 
 ### Using Smithery (Recommended)
 
