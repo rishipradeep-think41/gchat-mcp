@@ -1,0 +1,37 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - googleChatSpaceId
+      - googleChatApiKey
+      - googleChatToken
+    properties:
+      googleChatSpaceId:
+        type: string
+        description: The Space ID of your Google Chat space
+      googleChatApiKey:
+        type: string
+        description: The API key for your Google Cloud project
+      googleChatToken:
+        type: string
+        description: The authentication token for Google Chat
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({
+      command: 'node',
+      args: ['build/index.js'],
+      env: {
+        GOOGLE_CHAT_SPACE_ID: config.googleChatSpaceId,
+        GOOGLE_CHAT_API_KEY: config.googleChatApiKey,
+        GOOGLE_CHAT_TOKEN: config.googleChatToken
+      }
+    })
+  exampleConfig:
+    googleChatSpaceId: example_space_id
+    googleChatApiKey: example_api_key
+    googleChatToken: example_token
