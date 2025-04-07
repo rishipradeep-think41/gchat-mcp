@@ -2,7 +2,7 @@ export function buildTodoCard(todos: string): any {
   const parsedTodos = JSON.parse(todos);
 
   const widgets = parsedTodos.map((todo: any, index: any) => {
-    const icon = todo.type === "email" ? "EMAIL" : "INVITE";
+    const icon = todo.source === "email" ? "EMAIL" : "INVITE";
     return {
       decoratedText: {
         icon: {

@@ -1,4 +1,4 @@
-export function summaryBuilder(link: string) {
+export function summaryBuilder(link: string,title : string) {
   const cardPayload = {
     cardsV2: [
       {
@@ -6,13 +6,13 @@ export function summaryBuilder(link: string) {
         card: {
           sections: [
             {
-              header: "<b>Summary</b>",
+              header: `<b>Summary</b>: ${title}`,
               collapsible: false,
               uncollapsibleWidgetsCount: 1,
               widgets: [
                 {
                   textParagraph: {
-                    text: "Your requested summary is ready. Please review it with the button below",
+                    text: `Your requested summary about <b><i>${title}</i></b> is ready. Please review it with the button below`,
                   },
                 },
                 {

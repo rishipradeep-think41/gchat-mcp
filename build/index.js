@@ -62,7 +62,7 @@ class GoogleChatServer {
                 },
                 {
                     name: "send_summary",
-                    description: "Send a summary link in a card to a Google Chat space.",
+                    description: "Send a summary link and title in a card to a Google Chat space.",
                     inputSchema: {
                         type: "object",
                         properties: {
@@ -70,8 +70,12 @@ class GoogleChatServer {
                                 type: "string",
                                 description: "The link to be sent in the summary card",
                             },
+                            title: {
+                                type: "string",
+                                description: "The title of the card",
+                            }
                         },
-                        required: ["link"],
+                        required: ["link", "title"],
                     },
                 },
             ],
@@ -93,8 +97,8 @@ class GoogleChatServer {
     }
     async handleSendSummary(args) {
         try {
-            const { link } = args;
-            const card = summaryBuilder(link);
+            const { link, title } = args;
+            const card = summaryBuilder(link, title);
             const response = await fetch(`https://chat.googleapis.com/v1/spaces/${this.spaceId}/messages?key=${this.apiKey}&token=${this.apiToken}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
